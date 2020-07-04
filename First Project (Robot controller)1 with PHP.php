@@ -96,50 +96,61 @@
 	
  </head>
 
-<?php
-$host="127.0.0.1 ";
-$user="root";
-$password="";
-$database= "nouf";
+  <?php
+  $conn = new mysqli("localhost", "root", "");
+  // Check connection
 
-$connect= mysqli_connect('127.0.0.1','root' , '', 'nouf');
-if(mysqli_connect_errno()) {
-die("cannot connect database".mysqli_connect_errno());
-}
-else {
- echo 'Database is Connected';
- }
- $sql = "CREATE TABLE Robot_Controller
- ( id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KET, 
- Stright VAECHER (40),
- Back VAECHER (40),
- R VAECHER (40),
- L VAECHER (40), 
- STOP VAECHER (40) )"; 
- 
- if($connect->query ($sql)== TRUE)
- {
-  $sql1="INSERT INTO Robot_Controller (Stright , Back, RRightt , LLeft, STOP)
-   VALUES ( 'F','Stop','B','L','R')";
- 
-  $result = mysql_query($mysql, $sql1);
- }
- 
- 
-   ?> 
-   
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  // Create database
+  $sql = "CREATE DATABASE Nouf";
+  if ($conn->query($sql) === TRUE) {
+
+
+  }
+
+  $conn->close();
+
+  $conn1 = new mysqli("localhost", "root", "","Nouf");
+  // Check connection
+  if ($conn1->connect_error) {
+    die("Connection failed: " . $conn1->connect_error);
+  }
+
+  // sql to create table
+  $sql = "CREATE TABLE Robot_Controller (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  Stright VARCHAR(30) ,
+  Backk VARCHAR(30) ,
+  RRigh VARCHAR(50),
+  LLeft VARCHAR(50),
+  Stop VARCHAR(50)
+  )";
+
+
+
+  if ($conn1->query($sql) === TRUE) {
+
+    $sql1= "INSERT INTO Robot_Controller  (Stright,Backk, RRight ,LLeft,Stop)
+    VALUES ('Forward','Backward','Right','Left','Stop')";
+
+  }
+  ?>
+  
   <body>
-  <form  action="Runpage.php" method="post">
+  <form action = "RunPage.php" method = "post">
   <div> <div>
    <br>
    <h1> ROBOT CONTROLLER </h1>
    <p> First project with <a href = "hhttps://www.s-m.com.sa/" target = "_blank"> <b>'أساليب الذكية' </b>  </a> </p>
   
-	<button id="bou1" type = "submit" name= "Stright" value "F" >Forwords</button>
-	<button id="bou2" type = "submit" name= "Stop" value "S">Stop</button>
-	<button id="bou3" type = "submit" name= "Back" value "B" >Backwords</button>
-	<button id="bou4" type = "submit" name= "LLeft" value "L" >Left</button>
-    <button id="bou5" type = "submit" name= "RRightt" value "R" >Right</button>
+	<button id='bou1' type="submit"  name="Stright" value="go" >Forwords</button>
+	<button id="bou2" type="submit"  name="Stop" value="S">Stop</button>
+	<button id="bou3" type="submit"  name="Backk" value="B" >Backwords</button>
+	<button id="bou4" type="submit"  name="LLeft" value="L">Left</button>
+    <button id="bou5" type="submit"  name="RRight" value="R">Right</button>
 
 
 
@@ -147,16 +158,3 @@ else {
   </body>
 
 </html>
-
-<?php
-
-
-if (isset($_post['Forwords']))
-{
-   $Right = $_post['RRight'];
-   $sql1="INSERT INTO Robot_Controller (Stright , Back, RRightt , LLeft, STOP)
-   VALUES ( 'F','Stop','B','L','R')";
-   $result = mysql_query($mysql, $sql);
-   
-}
-?>

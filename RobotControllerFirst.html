@@ -96,32 +96,19 @@
 	
  </head>
 
-<?php
-$host="127.0.0.1 ";
-$user="root";
-$password="";
-$database= "nouf";
-
-$connect= mysqli_connect('127.0.0.1','root' , '', 'nouf');
-if(mysqli_connect_errno()) {
-die("cannot connect database".mysqli_connect_errno());
-}
-else {
- echo 'Database is Connected';
- }
- 
-?>
+  
   <body>
+ 
   <div> <div>
    <br>
    <h1> ROBOT CONTROLLER </h1>
    <p> First project with <a href = "hhttps://www.s-m.com.sa/" target = "_blank"> <b>'أساليب الذكية' </b>  </a> </p>
   
-	<button id="bou1">Forwords</button>
-	<button id="bou2">Stop</button>
-	<button id="bou3">Backwords</button>
-	<button id="bou4">Left</button>
-    <button id="bou5">Right</button>
+	<button id='bou1' type="submit"  name="Stright" value="go" >Forwords</button>
+	<button id="bou2" type="submit"  name="Stop" value="S">Stop</button>
+	<button id="bou3" type="submit"  name="Backk" value="B" >Backwords</button>
+	<button id="bou4" type="submit"  name="LLeft" value="L">Left</button>
+    <button id="bou5" type="submit"  name="RRight" value="R">Right</button>
 
 
 
